@@ -1,0 +1,16 @@
+<%
+  url= 'https://jsonplaceholder.typicode.com/posts/'
+  response = RestClient.get(url)
+  response_json = JSON.parse(response)
+%>
+<h1 class="h1-pages">Blog Orientado a Serviços</h1>
+<hr class="hr-pages">
+
+<article class="article-pages">
+  <% for posts in response_json %>
+    <h2 class="h2-pages"><%= posts['title']%></h2>
+    <p><%=posts['body'] %></p>
+  <% end %>
+</article>
+
+
