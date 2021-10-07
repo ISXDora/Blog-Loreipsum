@@ -1,6 +1,7 @@
 .body-pages{
 background-color: #508500;
 text-align: center;
+margin: auto;
 }
 
 .h1-pages{
@@ -26,7 +27,11 @@ width: 40%;
 background-color: #FFFFFF;
 padding: 10px 20px;
 display: block;
-text-align: left;}
+text-align: left;
+}
+.article-pages p {
+    font-size: 18px;;
+}
 
 .comments-container {
 border-left: 1px solid #00000029;
@@ -34,10 +39,28 @@ padding-left: 16px;;
 height: 90%;
 margin-left: 16px;
 }
-
-.comments-container label {
+.comments-container div {
+    margin-bottom: 8px;
+}
+.comments-container div label,
+.input-box label {
     font-weight: bold;
+    font-size: 16px;
+    margin-right: 4px;
 }
-.comments-container h4 {
-    font-size: 18px;
+.comments-container div p,
+.input-box p {
+    font-size: 16px;
+    margin: 0;
 }
+
+.input-box {
+    display: flex;
+    align-items: center;
+}
+
+.comments-container .hr-pages:last-child {
+    display: none;
+
+}
+

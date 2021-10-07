@@ -3,9 +3,6 @@
   response = RestClient.get(url)
   response_json = JSON.parse(response)
 
-  url_comments= 'https://jsonplaceholder.typicode.com/posts/1/comments'
-  response_comments = RestClient.get(url_comments)
-  response_comments_json = JSON.parse(response_comments)
 %>
 <h1 class="h1-pages">Blog Orientado a Serviços</h1>
 <hr class="hr-pages">
@@ -20,31 +17,43 @@
       name="id"
       value="<%= posts['id'] %>"
     >
-  <% end %>
+
+    <%
+
+    response_comments = RestClient.get "#{url}#{posts['id']}/comments"
+    response_comments_json = JSON.parse(response_comments)
+
+    %>
 
   <div class="comments-container">
+  
 
-    <% for comment in response_comments_json %>
+  <% for comment in response_comments_json %>
+      <div class="input-box">
+          <label for="name-comments">Nome:</label>
+          <p id="name-comments"> <%= comment['name'] %></p>
+      </div>
+      <div class="input-box">
+          <label for="email-comments">Email:</label>
+          <p id="email-comments"> <%= comment['email']%></p>
+      </div>
+      <div>
+          <label for="post-comments">Comentário:</label>
+          <p id="post-comments"> <%= comment['body']%></p>
+      </div>
 
-      <label for="name-comments">Nome:</label>
-        <h4 id="name-comments"><%= comment['name'] %></h4>
-      <label for="email-comments">Email:</label>
-        <p id="email-comments"><%= comment['email']%></p>
-      <label for="post-comments">Comentário:</label>
-        <p id="post-comments"><%= comment['body']%></p>
-
-        <input 
+      <input 
           type="hidden"
           name="postId"
           value="<%= comment['postId'] %>">
+      <hr class="hr-pages">
 
-    <% end %>
+  <% end %>
+  </div> 
+  <% end %>
 
-    <input 
-    type="button"
-    value="Esconder Comentários"
-    >
-  </div>
+  
+  
 </article>
 
 
